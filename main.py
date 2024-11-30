@@ -199,8 +199,17 @@ elif menu == 'HINDU PREMIUM':
 	def loadPremiumArticle(i):
 		a = requests.get(i['href'])
 		soup = BeautifulSoup(a.content, 'html.parser')
-		caption = soup.find('img', class_='lead-img')['title']
-		leadimg = soup.find('picture').find('source')['srcset']
+		try:
+			caption = soup.find('img', class_='lead-img')['title']
+			leadimg = soup.find('picture').find('source')['srcset']
+			subtitle =soup.find('h2', class_='sub-title').text
+			authors = soup.find('div', class_='author-name').text.strip()
+		except:
+			caption = ''
+			leadimg = ''
+			subtitle = ''
+			authors = ''
+		
 		body = soup.find('div',class_='articlebodycontent')
 		
 		children = []
@@ -210,7 +219,13 @@ elif menu == 'HINDU PREMIUM':
 		        children.append(str(child))
 		
 		st.title(i['title'])
-		st.image(leadimg, caption=caption, use_container_width=True)
+		st.subheader(subtitle)
+		st.write(authors)
+		try:
+			st.image(leadimg, caption=caption, use_container_width=True)
+		except:
+			pass
+
 		st.write('\n'.join(children), unsafe_allow_html=True)
 
 	cols = st.columns(7, gap='small')
