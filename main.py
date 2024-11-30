@@ -188,7 +188,7 @@ elif menu == 'HINDU PREMIUM':
 		            'href': div.find('h3').find('a')['href'],
 		            'img': img
 		        }
-		        
+
 		        if not temp_dict['title'] in [x['title'] for x in links]:
 		        	links.append(temp_dict)
 		return links
