@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 import json
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 st.set_page_config(layout="wide")
@@ -120,8 +120,9 @@ elif menu == 'SEARCH':
 	c1,c2,c3 = st.columns(3)
 	
 	query = c1.text_input('Search Query :')
-	sortBy = c2.selectbox('Sort By :', ['relevancy','popularity','publishedAt'])
-	fromdate = c3.date_input('FROM :')
+	sortBy = c2.selectbox('Sort By :', ['relevancy','popularity','publishedAt'], 1)
+	yesterday = datetime.now() - timedelta(1)
+	fromdate = c3.date_input('FROM :', yesterday)
 
 	cols = st.columns(10)
 	sources = [x for x in sources if x['country'] in ('us','in')]
@@ -133,7 +134,7 @@ elif menu == 'SEARCH':
 	if query:
 		@st.cache_data
 		def getQueryArticles(query, sortBy, fromdate, api):
-			u = f"""https://newsapi.org/v2/everything?q="{query}"&sortBy={sortBy}&from={fromdate}&language=en&apiKey={api}""".replace(' ','%20')
+			u = f"""https://newsapi.org/v2/everything?q="{query.lower().replace(' ','%20')}"&sortBy={sortBy}&from={fromdate}&language=en&apiKey={api}""".replace(' ','%20')
 			# st.write(u)
 			r = requests.get(u)
 			return json.loads(r.text)['articles']
@@ -144,7 +145,7 @@ elif menu == 'SEARCH':
 		st.title(query.upper())
 
 		columns = st.columns(5, gap='small')
-		for i, item in enumerate(articles):
+		for i, item in enumerate(articles[:49]):
 
 			c = columns[i%len(columns)]
 			date = datetime.strptime(item['publishedAt'], '%Y-%m-%dT%H:%M:%SZ').strftime('%d %b %Y')
