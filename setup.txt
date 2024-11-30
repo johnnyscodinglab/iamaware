@@ -1,0 +1,4 @@
+cd "E:\My Works\CodingLab\Python\iamaware"
+conda create --no-default-packages python=3.12 -n iamaware
+conda activate
+pip install streamlit
