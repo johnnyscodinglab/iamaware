@@ -249,7 +249,7 @@ elif menu == 'MEDIUM':
 		input_url = f"https://freedium.cfd/{input_url}"
 		r = requests.get(input_url)
 		soup = BeautifulSoup(r.content, 'html.parser')
-		banner = soup.find('img')		
+		banner = soup.find('img')['src']		
 		h1 = soup.find('h1')
 		h3 = soup.find('h2').text
 		maincontent = soup.find('div', class_='main-content')
@@ -272,13 +272,13 @@ elif menu == 'MEDIUM':
 				except:
 					pass
 			if element.name in ['p','li']:
-				element.attrs['style'] = 'font-size:1.2em'
+				element.attrs['style'] = 'font-size:1.1em'
 			if element.name == 'figcaption':
 				element.attrs['style'] = 'font-size:0.9em; color:gray'
 
 		st.markdown(f"""
 			<div style="margin: 0 auto;width: 80%">
-			{banner}
+			<img src="{banner}" width="100%">
 			<h1>{h1}</h1>
 			<h3 style='color:gray'>{h3}</h3>
 			{maincontent}
