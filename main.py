@@ -42,7 +42,7 @@ def getGenAI(api):
 sources = getSources(apiKey)
 defaultimg = 'https://images.unsplash.com/photo-1495020689067-958852a7765e?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
 
-menu  = st.selectbox('Select:', ['HOME','SEARCH','HINDU PREMIUM'], 0)
+menu  = st.selectbox('Select:', ['HOME','SEARCH','HINDU PREMIUM', 'MEDIUM'], 0)
 
 if menu == 'HOME':
 	topHeadlines = getTopHeadlines(apiKey)
@@ -237,3 +237,50 @@ elif menu == 'HINDU PREMIUM':
 			img = c.image('https://www.thehindu.com/theme/images/th-online/thumbnail-rectangle.svg', use_container_width=True)
 		if c.button(f"{item['title']}", use_container_width=True):
 			loadPremiumArticle(item)
+
+
+elif menu == 'MEDIUM':
+
+	# st.set_page_config(layout="centered")
+
+	st.title('FREEDIUM')
+	input_url = st.text_input('URL :')
+	if input_url:
+		input_url = f"https://freedium.cfd/{input_url}"
+		r = requests.get(input_url)
+		soup = BeautifulSoup(r.content, 'html.parser')
+		banner = soup.find('img')		
+		h1 = soup.find('h1')
+		h3 = soup.find('h2').text
+		maincontent = soup.find('div', class_='main-content')
+		for element in maincontent.find_all(True):
+			if 'class' in element.attrs:
+				del element.attrs['class']
+			if element.name == 'iframe':
+				try:
+					src = element.attrs['src']
+					print(src)
+					newframe = soup.new_tag("iframe", src=src, width="100%")
+					element.replace_with(newframe)
+				except:
+					pass
+					
+			if element.name == 'img':
+				# element.attrs['width'] = '100%'
+				try:
+					element.attrs['src'] = element.attrs['data-src']
+				except:
+					pass
+			if element.name in ['p','li']:
+				element.attrs['style'] = 'font-size:1.2em'
+			if element.name == 'figcaption':
+				element.attrs['style'] = 'font-size:0.9em; color:gray'
+
+		st.markdown(f"""
+			<div style="margin: 0 auto;width: 80%">
+			{banner}
+			<h1>{h1}</h1>
+			<h3 style='color:gray'>{h3}</h3>
+			{maincontent}
+			</div>
+			""", unsafe_allow_html=True)
