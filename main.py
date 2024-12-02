@@ -10,10 +10,10 @@ page_home = st.Page("pages/page_home.py", title="Home", icon="🏠")
 page_hindu = st.Page("pages/page_hindu.py", title="Hindu Premium", icon="📰")
 page_medium = st.Page("pages/page_medium.py", title="Medium", icon="⚫")
 page_search = st.Page("pages/page_search.py", title="Search", icon="🔍")
+page_source = st.Page("pages/page_source.py", title="Favorite Source", icon="ℹ️")
 
-pg = st.navigation([page_home, page_hindu, page_medium, page_search])
+pg = st.navigation([page_home, page_hindu, page_medium, page_search, page_source])
 pg.run()
-
 
 
 	
