@@ -2,3 +2,29 @@ cd "E:\My Works\CodingLab\Python\iamaware"
 conda create --no-default-packages python=3.12 -n iamaware
 conda activate
 pip install streamlit
+
+
+etprime
+data-articleid="115689444"
+artText
+class="article_content col s_col paywall"
+
+
+# elif menu == 'MORNING CONTEXT':
+
+# 	c1,c,c3 = st.columns([1,2,1])
+# 	@st.cache_data
+# 	def getPage(url):
+# 		r = requests.get(input_url)
+# 		return json.loads(r.text)
+	
+
+# 	input_url = 'https://api.themorningcontext.com/api/v1/story/how-byjus-allies-defied-us-courts-to-keep-control-of-assets'
+# 	o = getPage(input_url)
+	
+# 	# c.write(o)
+# 	c.title(o['data']['story']['title'])
+# 	c.subheader(o['data']['story']['strapline'])
+# 	c.caption(o['data']['story']['published_date'])
+# 	c.image(o['data']['seo_metadata']['og']['image'])
+# 	c.markdown(o['data']['story']['locked_content'] ,unsafe_allow_html=True)
