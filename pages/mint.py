@@ -4,11 +4,12 @@ import streamlit as st
 from bs4 import BeautifulSoup
 from datetime import datetime
 
-
 # st.subheader('Only Premium Articles from ')
+
+st.subheader('Only Premium Articles from ')
 c1,c2 = st.columns([2,10])
-# c1.subheader('Only Premium Articles from ')
-c1.image("https://logowik.com/content/uploads/images/mint-magazine8794.jpg")
+c1.image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzjWvnVgo-j4dLOWjfpqL6iT0QUKWmNzXAiQ&s")
+st.divider()
 
 def cleanhtml(htmlsoup):
 	for element in htmlsoup.find_all(True):  # True gets all tags
@@ -62,11 +63,12 @@ for page in range(1,5):
 		temp_dict = {
 		'title': div.find('h2').text.strip(),
 		'href': 'https://www.livemint.com'+div.find('h2').find('a')['href'],
+		'readtime': div.find('span',class_='fl date').text.strip(),
 		'img': div.find('a').find('img')['src']
 		}
 		links.append(temp_dict)
 
-cols = st.columns(6)
+cols = st.columns(4, gap='large')
 for i, link in enumerate(links):
 	c = cols[i%len(cols)]
 	try:
@@ -75,3 +77,5 @@ for i, link in enumerate(links):
 		img = c.image('https://media.licdn.com/dms/image/v2/D5612AQGG_UNzA25jdA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1727849138194?e=2147483647&v=beta&t=9LqRlgCQVZcO2z1SiKP8SyrVRn941ouVtK9T3FoLWiA', use_container_width=True)
 	if c.button(link['title'], use_container_width=True):
 		loadPremiumArticle(link['href'])
+	c.write(link['readtime'])
+	c.divider()

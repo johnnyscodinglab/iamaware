@@ -3,6 +3,7 @@ import requests
 import json
 from datetime import datetime, timedelta
 
+
 c,c1 = st.columns([1,7])
 c.image("logo.png")
 

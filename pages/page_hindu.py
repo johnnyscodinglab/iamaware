@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 
 st.subheader('Only Premium articles from')
 st.image('https://www.thehindu.com/theme/images/th-online/thehindu-logo.svg')
+st.divider()
 
 @st.cache_data
 def scrapePages():
@@ -33,6 +34,7 @@ def scrapePages():
 	return links
 
 links = scrapePages()
+# st.write(links)
 
 @st.dialog('💎', width='large')
 def loadPremiumArticle(i):
@@ -67,7 +69,7 @@ def loadPremiumArticle(i):
 
 	st.write('\n'.join(children), unsafe_allow_html=True)
 
-cols = st.columns(7, gap='small')
+cols = st.columns(4, gap='large')
 for i, item in enumerate(links):
 	c = cols[i%len(cols)]
 	try:
@@ -76,4 +78,5 @@ for i, item in enumerate(links):
 		img = c.image('https://www.thehindu.com/theme/images/th-online/thumbnail-rectangle.svg', use_container_width=True)
 	if c.button(f"{item['title']}", use_container_width=True):
 		loadPremiumArticle(item)
+	c.divider()
 
