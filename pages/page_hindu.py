@@ -21,6 +21,7 @@ def scrapePages():
 	    for div in [maindiv] + equalrow + divs:
 	        try:
 	            img = div.find('div', class_='picture').find('img')['data-src-template']
+	            img = img.replace('SQUARE_80','LANDSCAPE_660')
 	        except:
 	            img = None
 	        temp_dict = {
@@ -73,7 +74,7 @@ cols = st.columns(4, gap='large')
 for i, item in enumerate(links):
 	c = cols[i%len(cols)]
 	try:
-		img = c.image(item['img'].replace('SQUARE_80','SQUARE_140'), use_container_width=True)
+		img = c.image(item['img'], use_container_width=True)
 	except:
 		img = c.image('https://www.thehindu.com/theme/images/th-online/thumbnail-rectangle.svg', use_container_width=True)
 	if c.button(f"{item['title']}", use_container_width=True):
