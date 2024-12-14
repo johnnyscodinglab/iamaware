@@ -61,10 +61,10 @@ for page in range(1,5):
 
 	for div in tiles:
 		temp_dict = {
-		'title': div.find('h2').text.strip(),
-		'href': 'https://www.livemint.com'+div.find('h2').find('a')['href'],
-		'readtime': div.find('span',class_='fl date').text.strip(),
-		'img': div.find('a').find('img')['src'].replace('90x90','600x338')
+			'title': div.find('h2').text.strip(),
+			'href': 'https://www.livemint.com'+div.find('h2').find('a')['href'],
+			'readtime': div.find('span',class_='fl date').text.strip(),
+			'img': div.find('a').find('img')['src'].replace('90x90','600x338')
 		}
 		links.append(temp_dict)
 

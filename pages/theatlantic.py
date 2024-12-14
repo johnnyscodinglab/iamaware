@@ -23,8 +23,10 @@ def getSections():
 	return items
 
 sections = getSections()
+sections['Books'] = sections['Books'] + '/all'
 # st.write(sections)
-section_selected = st.radio('Section', sections.keys(), horizontal=True)
+keys_display = [x for x in sections.keys() if x not in ['Newsletters','Fiction','Photo','Culture','Planet','Audio','Features','Events','Washington Week','Progress']]
+section_selected = st.radio('Section', keys_display, horizontal=True)
 
 @st.cache_data
 def getStories(url):
@@ -33,13 +35,33 @@ def getStories(url):
 	articles = soup.find('section', attrs={'data-event-module': "river"}).find_all('article')
 	items = []
 	for article in articles:
+		try:
+			author = article.find('div').find('a').text
+		except:
+			author = ''
+
+		try:
+			t = article.find('div').find('time').text if article.find('div').find('time') else ""
+		except:
+			t = ''
+
+		try:
+			img = article.find('img')['srcset'].split(',')[-1].strip().split(' ')[0]
+		except:
+			img = 'https://variety.com/wp-content/uploads/2020/05/the-atlantic.png'
+
+		try:
+			p = article.find('p').text
+		except:
+			p = ''
+
 		items.append({
 			'url': article.find('a')['href'],
 			'title': article.find('a').text.strip(),
-			'subtitle': article.find('p').text,
-			'time': article.find('div').find('time').text if article.find('div').find('time') else "",
-			'author': article.find('div').find('a').text,
-			'img': article.find('img')['src']
+			'subtitle': p,
+			'time': t,
+			'author': author,
+			'img': img
 			})
 
 	return items
@@ -68,20 +90,28 @@ def loadPremiumArticle(url):
 
 storyriver = getStories(sections[section_selected])
 # st.write(storyriver)
+
 st.divider()
-cols = st.columns(4)
+cols = st.columns(4, gap='large')
 for i, item in enumerate(storyriver):
 	c = cols[i%len(cols)]
 	c.image(item['img'], use_container_width=True)
 	if c.button(item['title']):
 		loadPremiumArticle(item['url'])
-	c.markdown(f'''
-		<style>  </style>
-		<p> {item['subtitle']} </p>
-		<small> {item['author']} | {item['time']} </small>
-		<hr>
-	''',
-	unsafe_allow_html=True)
-	
+	if item['author'] or item['time']:
+		c.markdown(f'''
+			<style>  </style>
+			<p> {item['subtitle']} </p>
+			<small> {item['author']} | {item['time']} </small>
+			<hr>
+		''',
+		unsafe_allow_html=True)
+	else:
+		c.markdown(f'''
+			<style>  </style>
+			<p> {item['subtitle']} </p>
+			<hr>
+		''',
+		unsafe_allow_html=True)
 
 # 	

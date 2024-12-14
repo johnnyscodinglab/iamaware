@@ -7,11 +7,14 @@
 
 h1, h2, h3, h4, h5 { 
 	font-family: "Croissant One", serif;
+	letter-spacing: -1px;
 }
 
 button[kind='secondary'] {
-  font-family: "Croissant One", serif;
 	border: 0; padding: 0; outline: none;
+	font-family: "Croissant One", serif;
+	letter-spacing: -1px;
+	line-height: 2em;
 }
 
 button > div > p{
