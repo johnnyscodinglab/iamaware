@@ -13,7 +13,7 @@ with open('style.css') as f:
 
 page_home = st.Page("pages/page_home.py", title="Home", icon="🏠")
 page_hindu = st.Page("pages/page_hindu.py", title="Hindu Premium", icon="📰")
-page_medium = st.Page("pages/page_medium.py", title="Medium", icon="⚫")
+# page_medium = st.Page("pages/page_medium.py", title="Medium", icon="⚫")
 page_search = st.Page("pages/page_search.py", title="Search", icon="🔍")
 page_source = st.Page("pages/page_source.py", title="Favorite Source", icon="ℹ️")
 ft = st.Page("pages/financialtimes.py", title="Financial Times")
@@ -21,7 +21,7 @@ mint = st.Page("pages/mint.py", title="Mint Premium", icon="🍃")
 atlantic = st.Page("pages/theatlantic.py", title="The Atlantic", icon="🅰️")
 # hbr = st.Page('pages/hbr.py', title="HBR")
 
-pg = st.navigation([page_home, page_hindu, page_medium,  mint, atlantic, page_search, page_source])
+pg = st.navigation([page_home, page_hindu, mint, atlantic, page_search, page_source])
 pg.run()
 
 

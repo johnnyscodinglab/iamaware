@@ -10,9 +10,15 @@ if input_url:
 	input_url = f"https://freedium.cfd/{input_url}"
 	r = requests.get(input_url)
 	soup = BeautifulSoup(r.content, 'html.parser')
-	banner = soup.find('img')['src']		
+	try:
+		banner = soup.find('img')['src']		
+	except:
+		banner = 'https://miro.medium.com/v2/1*P81ck71Q_5PJGkKr3YP_2w.png'
 	h1 = soup.find('h1')
-	h3 = soup.find('h2').text
+	try:
+		h3 = soup.find('h2').text
+	except:
+		h3 = ''
 	maincontent = soup.find('div', class_='main-content')
 	for element in maincontent.find_all(True):
 		if 'class' in element.attrs:

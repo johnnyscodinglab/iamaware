@@ -102,7 +102,7 @@ for i, item in enumerate(storyriver):
 		c.markdown(f'''
 			<style>  </style>
 			<p> {item['subtitle']} </p>
-			<small> {item['author']} | {item['time']} </small>
+			<small> {item['author']} {item['time']} </small>
 			<hr>
 		''',
 		unsafe_allow_html=True)

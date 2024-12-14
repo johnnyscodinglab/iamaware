@@ -43,9 +43,9 @@ if query:
 	articles = getQueryArticles(query, sortBy, fromdate, apiKey)
 	articles = [x for x in articles if x['title'] != "[Removed]"]
 
-	st.title(query.upper())
+	st.title(query.title())
 
-	columns = st.columns(5, gap='small')
+	columns = st.columns(4, gap='large')
 	for i, item in enumerate(articles[:49]):
 
 		c = columns[i%len(columns)]

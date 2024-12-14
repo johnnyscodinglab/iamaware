@@ -37,7 +37,7 @@ news = getTechNews(apiKey, domain)['articles']
 
 
 st.title(source_name)
-columns = st.columns(4, gap='small')
+columns = st.columns(4, gap='large')
 
 for i, item in enumerate(news[:49]):
 
@@ -48,6 +48,8 @@ for i, item in enumerate(news[:49]):
 		
 	    <a href="{item['url']}" style="text-decoration:none;color:inherit;background-image:url({item['urlToImage'] if item['urlToImage'] else defaultimg}); background-position:center top; background-size:cover;display:block; height:400px">
 			<h5 style="bottom:0;margin:5pt 0;padding:20px;color:white;background:rgba(0,0,0,1);"> {item['title'].split(' - ')[0]} </h5>
-	    </a>''',
+	    </a>
+	    <p></p>
+	    ''',
 	    unsafe_allow_html=True
 	)
