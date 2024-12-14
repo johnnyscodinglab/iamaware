@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Croissant+One&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Poppins&display=swap');
+
+* {
+  font-family: "PT Serif", sans-serif;
+
+}
+button[kind='secondary'] {
+  font-family: "Croissant One", serif;
+	border: 0; padding: 0; outline: none;
+}
+
+button > div > p{
+	font-family: "Croissant One", serif;
+	font-size: 1.5em;
+	font-weight: 600;
+	text-align: left;
+}
