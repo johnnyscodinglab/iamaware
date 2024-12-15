@@ -19,9 +19,10 @@ page_source = st.Page("pages/page_source.py", title="Favorite Source", icon="ℹ
 ft = st.Page("pages/financialtimes.py", title="Financial Times")
 mint = st.Page("pages/mint.py", title="Mint Premium", icon="🍃")	
 atlantic = st.Page("pages/theatlantic.py", title="The Atlantic", icon="🅰️")
+wired = st.Page("pages/wired.py", title="Wired", icon="🔌")
 # hbr = st.Page('pages/hbr.py', title="HBR")
 
-pg = st.navigation([page_home, page_hindu, mint, atlantic, page_search, page_source])
+pg = st.navigation([page_home, page_hindu, mint, atlantic, wired, page_search, page_source])
 pg.run()
 
 

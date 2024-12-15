@@ -37,7 +37,7 @@ news = getTechNews(apiKey, domain)['articles']
 
 
 st.title(source_name)
-columns = st.columns(4, gap='large')
+columns = st.columns(4)
 
 for i, item in enumerate(news[:49]):
 

@@ -45,7 +45,7 @@ if query:
 
 	st.title(query.title())
 
-	columns = st.columns(4, gap='large')
+	columns = st.columns(4)
 	for i, item in enumerate(articles[:49]):
 
 		c = columns[i%len(columns)]

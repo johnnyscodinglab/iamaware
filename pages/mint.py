@@ -68,7 +68,7 @@ for page in range(1,5):
 		}
 		links.append(temp_dict)
 
-cols = st.columns(4, gap='large')
+cols = st.columns(4)
 for i, link in enumerate(links):
 	c = cols[i%len(cols)]
 	try:

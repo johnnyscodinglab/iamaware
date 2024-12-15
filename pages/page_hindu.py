@@ -70,7 +70,7 @@ def loadPremiumArticle(i):
 
 	st.write('\n'.join(children), unsafe_allow_html=True)
 
-cols = st.columns(4, gap='large')
+cols = st.columns(4)
 for i, item in enumerate(links):
 	c = cols[i%len(cols)]
 	try:

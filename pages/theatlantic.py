@@ -92,7 +92,7 @@ storyriver = getStories(sections[section_selected])
 # st.write(storyriver)
 
 st.divider()
-cols = st.columns(4, gap='large')
+cols = st.columns(4)
 for i, item in enumerate(storyriver):
 	c = cols[i%len(cols)]
 	c.image(item['img'], use_container_width=True)
