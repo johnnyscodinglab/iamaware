@@ -16,11 +16,12 @@ c1.image("https://logovectordl.com/wp-content/uploads/2021/01/the-atlantic-logo-
 def getSections():
 	r = requests.get('https://www.theatlantic.com/world/')
 	soup = BeautifulSoup(r.content, 'html.parser')
-	sections = soup.find_all('a', attrs={'data-action':'expanded'})
+	sections = soup.find_all('div', attrs={'data-event-element':'sections'})[0].find_all('ul')[0].find_all('a')
 	items = {}
 	for x in sections:
 		items[x.text] = 'https://www.theatlantic.com'+x['href'] if 'https://www.theatlantic.com' not in x['href'] else x['href']
 	return items
+
 
 sections = getSections()
 sections['Books'] = sections['Books'] + '/all'
@@ -113,5 +114,3 @@ for i, item in enumerate(storyriver):
 			<hr>
 		''',
 		unsafe_allow_html=True)
-
-# 	

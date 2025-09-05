@@ -8,4 +8,12 @@ st.markdown("""
 4. [Sci-Hub](https://sci-hub.se/) is a shadow library website that provides free access to millions of research papers and books, without regard to copyright, by bypassing publishers' paywalls in various ways. Sci-Hub was founded by Alexandra Elbakyan in 2011 in Kazakhstan in response to the high cost of research papers behind paywalls
 5. Find free audiobooks from [audiobookbay](http://audiobookbay.nl/)
 6. Remove Paywalls using [removepaywalls.com](https://removepaywalls.com/)
+
+## For Generative AI
+1. [The Batch | Deeplearning.ai](https://www.deeplearning.ai/the-batch/)
+2. [MIT News | Machine Learning](https://news.mit.edu/topic/machine-learning)
+3. [Analytics India Magazine](https://analyticsindiamag.com/news/generative-ai/)
+4. [Distill | An academic journal for big data and machine learning research](https://distill.pub/)
+5. [AI Explained | YouTube](https://www.youtube.com/@aiexplained-official/videos)
+6. [r/singularity/](https://www.reddit.com/r/singularity/)
 """)

@@ -41,18 +41,28 @@ links = scrapePages()
 def loadPremiumArticle(i):
 	a = requests.get(i['href'])
 	soup = BeautifulSoup(a.content, 'html.parser')
+
 	try:
 		caption = soup.find('img', class_='lead-img')['title']
-		leadimg = soup.find('picture').find('source')['srcset']
-		subtitle =soup.find('h2', class_='sub-title').text
-		authors = soup.find('div', class_='author-name').text.strip()
 	except:
 		caption = ''
+
+	try:
+		leadimg = soup.find('picture').find('source')['srcset']
+	except:
 		leadimg = ''
+
+	try:
+		subtitle =soup.find('h2', class_='sub-title').text
+	except Exception as e:
 		subtitle = ''
+
+	try:
+		authors = soup.find('div', class_='author-name').text.strip()
+	except:
 		authors = ''
-	
-	body = soup.find('div',class_='articlebodycontent')
+
+	body = soup.find('div',id='schemaDiv')
 	
 	children = []
 	for child in body.findChildren(recursive=False):

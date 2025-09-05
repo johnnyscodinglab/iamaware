@@ -52,17 +52,20 @@ def loadPremiumArticle(url):
 				{mainarea}""".split()]), unsafe_allow_html=True)
 
 
+
+
+
 links = []
 for page in range(1,5):
 
 	r = requests.get(f'https://www.livemint.com/premium/page-{page}')
 	soup = BeautifulSoup(r.content, 'html.parser')
-	tiles = soup.find_all('div', class_='listingNew')
+	tiles = soup.find_all('div', class_='listtostory')
 
 	for div in tiles:
 		temp_dict = {
-			'title': div.find('h2').text.strip(),
-			'href': 'https://www.livemint.com'+div.find('h2').find('a')['href'],
+			'title': div.find('h2', class_='headline').text.strip(),
+			'href': 'https://www.livemint.com'+div.find('h2', class_='headline').find('a')['href'],
 			'readtime': div.find('span',class_='fl date').text.strip(),
 			'img': div.find('a').find('img')['src'].replace('90x90','600x338')
 		}
