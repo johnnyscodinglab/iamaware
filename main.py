@@ -21,9 +21,10 @@ mint = st.Page("pages/mint.py", title="Mint Premium", icon="🍃")
 atlantic = st.Page("pages/theatlantic.py", title="The Atlantic", icon="🅰️")
 wired = st.Page("pages/wired.py", title="Wired", icon="🔌")
 free = st.Page("pages/free_resources.py", title="Free Resources", icon="🆓")
+fraudometer = st.Page("pages/fraudometer.py", title="Fraud-o-Meter", icon="🕵️")
 # hbr = st.Page('pages/hbr.py', title="HBR")
 
-pg = st.navigation([page_home, page_hindu, mint, atlantic, wired, page_search, page_source, free])
+pg = st.navigation([page_home, page_hindu, mint, atlantic, wired, page_search, page_source, free, fraudometer])
 pg.run()
 
 
