@@ -1,5 +1,4 @@
 import streamlit as st
-import whisper
 import openai
 from openai import OpenAI
 import json
