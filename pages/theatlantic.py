@@ -33,11 +33,11 @@ section_selected = st.radio('Section', keys_display, horizontal=True)
 def getStories(url):
 	r = requests.get(url)
 	soup = BeautifulSoup(r.content, 'html.parser')
-	articles = soup.find('section', attrs={'data-event-module': "river"}).find_all('article')
+	articles = soup.find('div', attrs={'data-event-module': "collection"}).find_all('article')
 	items = []
 	for article in articles:
 		try:
-			author = article.find('div').find('a').text
+			author = article.find('div').find(attrs={'data-event-element':'author'}).text
 		except:
 			author = ''
 
@@ -58,7 +58,7 @@ def getStories(url):
 
 		items.append({
 			'url': article.find('a')['href'],
-			'title': article.find('a').text.strip(),
+			'title': article.find('h3').text.strip(),
 			'subtitle': p,
 			'time': t,
 			'author': author,
