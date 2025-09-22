@@ -6,6 +6,7 @@ import pandas as pd
 import plotly.express as px
 
 st.image('images/fraudometer.png', width=300)
+st.subheader('Act you are calling a bank, and... AI will rate your "Fraud"ivity')
 openai.api_key = st.secrets["openai_apikey"]
 client = OpenAI(api_key=st.secrets["openai_apikey"])
 
@@ -15,7 +16,7 @@ def save_audio(input, path='images/recorded_audio.wav'):
     """Save audio file directly"""
     with open(path, "wb") as f:
         f.write(input.getbuffer())
-    st.success('Audio Saved')
+    # st.success('Audio Saved')
 
 def transcribe_audio(path='images/recorded_audio.wav'):
     """Make the transcription request from whisper"""
