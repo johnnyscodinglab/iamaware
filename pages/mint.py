@@ -53,8 +53,6 @@ def loadPremiumArticle(url):
 
 
 
-
-
 links = []
 for page in range(1,5):
 

@@ -31,7 +31,7 @@ def getImage(link):
     return None
 
 # multiprocessing wrapper
-@st.cache_data()
+@st.cache_data(show_spinner='Getting Articles...')
 def get_images_parallel(links, max_workers=10):
     results = {}
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
