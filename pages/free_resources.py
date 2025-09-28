@@ -16,4 +16,7 @@ st.markdown("""
 4. [Distill | An academic journal for big data and machine learning research](https://distill.pub/)
 5. [AI Explained | YouTube](https://www.youtube.com/@aiexplained-official/videos)
 6. [r/singularity/](https://www.reddit.com/r/singularity/)
+
+## Data Visualization
+1. [Chart Guide | Storytelling with Data](https://www.storytellingwithdata.com/chart-guide)
 """)

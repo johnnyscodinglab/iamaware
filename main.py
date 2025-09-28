@@ -25,9 +25,11 @@ fraudometer = st.Page("pages/fraudometer.py", title="Fraud-o-Meter", icon="🕵�
 gnews = st.Page("pages/googlenews.py", title="Google News", icon="🗺️")
 newsletter = st.Page("pages/newsletter.py", title="Daily Newsletter", icon="🗺️")
 slides = st.Page("pages/slides.py", title="Slideument", icon="👩‍🏫")
+genai = st.Page("pages/genai.py", title="AI News", icon="🤖")
 # hbr = st.Page('pages/hbr.py', title="HBR")
 
-pg = st.navigation([page_home, page_hindu, mint, atlantic, wired, page_search, page_source, free, fraudometer, gnews, newsletter, slides])
+pg = st.navigation([page_home, page_hindu, mint, atlantic, wired, page_search, 
+	page_source, free, fraudometer, gnews, newsletter, slides, genai])
 pg.run()
 
 
