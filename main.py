@@ -26,10 +26,12 @@ gnews = st.Page("pages/googlenews.py", title="Google News", icon="🗺️")
 newsletter = st.Page("pages/newsletter.py", title="Daily Newsletter", icon="🗺️")
 slides = st.Page("pages/slides.py", title="Slideument", icon="👩‍🏫")
 genai = st.Page("pages/genai.py", title="AI News", icon="🤖")
+newsletter2 = st.Page("pages/newsletter2.py", title="Newsletter 2.0", icon="🗺️")
+voicetransformation = st.Page("pages/voicetransformation.py", title="Transform Voice", icon="🔊")
 # hbr = st.Page('pages/hbr.py', title="HBR")
 
 pg = st.navigation([page_home, page_hindu, mint, atlantic, wired, page_search, 
-	page_source, free, fraudometer, gnews, newsletter, slides, genai])
+	page_source, free, fraudometer, gnews, newsletter, slides, genai, voicetransformation])
 pg.run()
 
 

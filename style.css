@@ -1,13 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Croissant+One&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Poppins&display=swap');
-
-* {
+@import url('https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:ital,wght@0,300..700;1,300..700&display=swap');
+p {
   font-family: "PT Serif", sans-serif;
-
 }
 
 h1, h2, h3, h4, h5, h6 { 
 	font-family: "Croissant One", serif;
 	letter-spacing: -1px;
+}
+
+.language-python, code {
+	font-family: "Spline Sans Mono", monospace;
 }
 
 button[kind='secondary'] {
