@@ -53,3 +53,4 @@ watchdog==6.0.0
 wheel==0.44.0
 plotly==6.3.0
 openai==1.107.2
+youtube-transcript-api==1.2.2
